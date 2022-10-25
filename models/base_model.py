@@ -46,12 +46,10 @@ class BaseModel:
         """
         update_time = datetime.now()
         self.updated_at = update_time
+        storage.save()
 
     def __str__(self):
         """
         printable representation returned.
         """
         return f"[{__class__.__name__}] ({self.id}) {self.__dict__}"
-
-if __name__ == "__main__":
-    storage.save()
