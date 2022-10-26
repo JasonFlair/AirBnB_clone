@@ -16,7 +16,13 @@ class BaseModel:
         :param id: id of the model
         """
         if kwargs:
-            self.__dict__.update((k, v) for k, v in kwargs.items())
+            for k, v in kwargs.items():
+                if k == "created_at" or k == "updated_at":
+                    v = datetime.fromisoformat(kwargs[k])
+                if k == "__class__":
+                    pass
+                else:
+                    setattr(self, k, v)
         else:
             creation_time = datetime.now()
             update_time = datetime.now()
@@ -39,7 +45,7 @@ class BaseModel:
                 new_dict[key] = datetime.isoformat(value)
             else:
                 new_dict[key] = value
-
+        new_dict['__class__'] = type(self).__name__
         return new_dict
     def save(self):
         """

@@ -47,7 +47,6 @@ class FileStorage:
         does nothing if file is not found
         """
         try:
-            dummy_dict = {}
             with open(FileStorage.__file_path, "r") as read_file:
                 dummy_dict = json.load(read_file)
                 for k, v in dummy_dict.items():
