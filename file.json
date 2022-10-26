@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"BaseModel.8cb8d181-d143-475f-889d-c42cfdb53d98": 
-=======
-{}
->>>>>>> 541107aacf4788d22a6661707cd76728a2a111f0
+{"BaseModel.8bafff53-03c9-4d7e-ad2d-373ea556abb3": {"id": "8bafff53-03c9-4d7e-ad2d-373ea556abb3", "created_at": "2022-10-26T15:02:58.064908", "updated_at": "2022-10-26T15:02:58.064908", "name": "My_First_Model", "my_number": 89}}
