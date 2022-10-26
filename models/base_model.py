@@ -23,7 +23,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = creation_time
             self.updated_at = update_time
-            storage.save(self)
+            storage.new(self)
 
     def to_dict(self):
         """
