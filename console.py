@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/python3
 """
 command line console
@@ -66,3 +67,28 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+=======
+#!/usr/bin/python3
+"""
+command line console
+"""
+import cmd
+
+class HBNBCommand(cmd.Cmd):
+    """
+    class for console
+    """
+    intro = 'Welcome to the jason shell. Type help or ? to list commands.\n'
+    prompt = '(hbnb) '
+
+    def do_quit(self, arg):
+        """quit the console"""
+        exit()
+
+    def do_EOF(self, arg):
+        """at eof, quit console"""
+        exit()
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
+>>>>>>> 0757c15daf845b4cb0f2cc58bb07868baf45ac6c
