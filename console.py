@@ -3,6 +3,7 @@
 command line console
 """
 import cmd
+import json
 import sys
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
@@ -61,6 +62,26 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** no instance found **")
 
+    def do_delete(self, arg):
+        """
+        deletes an instance
+        """
+        arg_list = arg.split()
+        if arg_list[0] not in self.arg_classes:
+            print("** class doesn't exist **")
+        elif len(arg_list) < 0:
+            print("** class name missing **")
+        elif len(arg_list) < 2:
+            print("** instance id missing **")
+        else:
+            try:
+                obj_dictionary = storage.all()
+                #return file storage objects dictionary
+                key_name = arg_list[0] + "." + arg_list[1]
+                del obj_dictionary[key_name]
+                storage.save()
+            except KeyError:
+                print("** no instance found **")
 
 
 
