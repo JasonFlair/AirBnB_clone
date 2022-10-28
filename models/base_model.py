@@ -47,6 +47,7 @@ class BaseModel:
                 new_dict[key] = value
         new_dict['__class__'] = type(self).__name__
         return new_dict
+
     def save(self):
         """
         update and save time of update
@@ -59,4 +60,4 @@ class BaseModel:
         """
         printable representation returned.
         """
-        return f"[{__class__.__name__}] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

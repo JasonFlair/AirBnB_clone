@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     intro = 'Welcome to the jason shell. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
 
-    arg_classes = ['BaseModel', 'User']
+    arg_classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
 
     def do_quit(self, arg):
         """quit the console"""
