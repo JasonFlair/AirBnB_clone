@@ -9,6 +9,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
     """
     class for console
@@ -16,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     intro = 'Welcome to the jason shell. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
 
-    arg_classes = ['BaseModel']
+    arg_classes = ['BaseModel', 'User']
 
     def do_quit(self, arg):
         """quit the console"""
@@ -56,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             try:
                 obj_dictionary = storage.all()
-                #return file storage objects dictionary
+                # return file storage objects dictionary
                 key_name = arg_list[0] + "." + arg_list[1]
                 print(obj_dictionary[key_name])
             except KeyError:
@@ -76,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             try:
                 obj_dictionary = storage.all()
-                #return file storage objects dictionary
+                # return file storage objects dictionary
                 key_name = arg_list[0] + "." + arg_list[1]
                 del obj_dictionary[key_name]
                 storage.save()
@@ -98,6 +99,36 @@ class HBNBCommand(cmd.Cmd):
                 for k, v in obj_dict.items():
                     print(obj_dict[k])
 
+    def do_update(self, args):
+        """
+        updates an instance
+        """
+        arg_list = args.split()
+        if arg_list[0] not in self.arg_classes:
+            print("** class doesn't exist **")
+        elif len(arg_list) < 0:
+            print("** class name missing **")
+        elif len(arg_list) < 2:
+            print("** instance id missing **")
+        elif len(arg_list) < 3:
+            print("** attribute name missing **")
+        elif len(arg_list) < 4:
+            print("** value missing **")
+        else:
+            try:
+                attribute_to_be_updated = arg_list[2]
+                value_of_attr = eval(arg_list[3])
+
+                obj_dictionary = storage.all()
+                # return file storage objects dictionary
+                key_name = arg_list[0] + "." + arg_list[1]
+
+                instance = obj_dictionary[key_name]
+                instance_dict = instance.__dict__
+                instance_dict[attribute_to_be_updated] = value_of_attr
+                instance.save()
+            except KeyError:
+                print("** no instance found **")
 
 
 if __name__ == '__main__':
