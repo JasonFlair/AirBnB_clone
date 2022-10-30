@@ -60,4 +60,4 @@ class BaseModel:
         """
         printable representation returned.
         """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"

@@ -8,6 +8,13 @@ import sys
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -35,7 +42,9 @@ class HBNBCommand(cmd.Cmd):
         """
         if class_arg:
             if class_arg in self.arg_classes:
-                new_model = BaseModel()
+                new_model = eval(class_arg)()
+                print(eval(class_arg))
+                print(class_arg)
                 new_model.save()
                 print(new_model.id)
             else:
