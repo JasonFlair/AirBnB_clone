@@ -30,6 +30,9 @@ class HBNBCommand(cmd.Cmd):
         """quit the console"""
         exit()
 
+    def emptyline(self):
+        pass
+
     def do_EOF(self, arg):
         """at eof, quit console"""
         return True
