@@ -35,6 +35,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """at eof, quit console"""
+        print()
         return True
 
     def do_create(self, class_arg):
