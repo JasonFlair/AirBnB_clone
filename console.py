@@ -46,8 +46,6 @@ class HBNBCommand(cmd.Cmd):
         if class_arg:
             if class_arg in self.arg_classes:
                 new_model = eval(class_arg)()
-                print(eval(class_arg))
-                print(class_arg)
                 new_model.save()
                 print(new_model.id)
             else:
